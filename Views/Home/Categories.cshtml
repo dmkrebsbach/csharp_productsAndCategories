@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+	<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Form Submission</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="~/css/productStyle.css">
+	</head>
+    <body>
+        @model AddCategoryViewModel
+        <h1><a href="/Products">Products</a> | | | | <a href="/Categories">Categories</a></h1>
+        <div class="container">
+            <div class = "formBox">
+                <h1>New Category</h1>
+                <form asp-action="AddCategory" asp-controller="Home" method="post">
+                    <label asp-for="newCategory.Name">Category Name: </label>
+                    <input asp-for="newCategory.Name"><br>
+                    <input value="Add Category" class = "btn" type="submit">
+                </form>
+            </div>
+            <div class = "formBoxMessage">
+                
+                
+            </div>
+            <div class = "formBox">
+                <h1>Categories In Home</h1>
+                <div class="listBox">
+                @{
+                    <ul>
+                        @foreach(Category cate in Model.Categories){
+                            <li><a href="/category/@cate.CategoryId">@cate.Name</a></li>
+                        }
+                    </ul>
+                }
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

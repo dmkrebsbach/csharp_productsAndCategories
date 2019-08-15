@@ -1,0 +1,87 @@
+*{
+    margin: 0px;
+    padding:0px;
+}
+
+body{
+    margin: 10px;
+    display: inline-block;
+    width: 100%;
+}
+
+.container{
+    margin: 50px;
+    display: flex;
+    width: 100%;
+}
+
+h1 {
+    display: block;
+    margin: 20px auto;
+    color: navy;
+    text-align: center;
+    width: 100%;
+}
+
+.formBox {
+    display: inline-block;
+    width: 33%;
+    vertical-align: top;
+}
+
+.formBoxMessage {
+    display: inline-block;
+    width: 28%;
+    vertical-align: top;
+    margin-top: 100px;
+}
+
+form{
+    margin: 10px auto;
+    display: block;
+    border: 5px solid black;
+    padding: 15px;
+    width: 450px;
+
+}
+
+.label {
+    float: left;
+    text-align: right;
+}
+
+input {
+    margin: 8px;
+    height: 32px;
+    width: 210px;
+    text-align: left;
+    
+}
+
+.listBox {
+    margin: 10px auto;
+    display: block;
+    border: 5px solid black;
+    padding: 15px;
+    width: 450px;
+    height: 192px;
+    overflow-y: scroll;
+}
+
+.listBox ul {
+    margin: 10px 0px 10px 20px;
+}
+
+.listBox li {
+    margin: 6px;
+}
+
+form.categoryForm {
+    margin: 10px auto;
+    display: block;
+    border: 5px solid black;
+    padding: 15px;
+    width: 450px;
+    height: 192px;
+    
+}

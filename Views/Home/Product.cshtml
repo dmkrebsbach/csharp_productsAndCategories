@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+	<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Individual Product</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="~/css/productStyle.css">
+	</head>
+    <body>
+        @model ProductViewModel
+        <h1><a href="/Products">Products</a> | | | | <a href="/Categories">Categories</a></h1>
+        <h1>PRODUCT: @Model.thisProduct.Name</h1>
+        <div class="container">
+            <div class="formBox">
+                <h1>Product Categories:</h1>
+                <div class = "listBox">
+                    
+                    @{
+                        <ul>
+                            @foreach(Association assoc in Model.thisProduct.Associations){
+                                <li>@assoc.Category.Name</li>
+                            }
+                        </ul>
+                    }
+                </div>
+            </div>
+            <div class = "formBoxMessage">
+                
+                
+            </div>
+            <div class = "formBox">
+                <h1>Add Category To Product</h1>
+                    <form class="categoryForm" asp-action="AddIndCategory" asp-controller="Home" method="post">
+                        <label asp-for="Association.CategoryId">Add Category: </label>
+                        <select asp-for="Association.CategoryId">
+                            @{
+                                @foreach(Category cate in Model.thisCategoryList){
+                                <option value="@cate.CategoryId">
+                                        <li>@cate.Name</li>
+                                </option>
+                                }
+                            }
+                        </select>
+                        <input value="Add Category" class = "btn" type="submit">
+                    </form>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+	<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Form Submission</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="~/css/productStyle.css">
+	</head>
+    <body>
+        @model AddProductViewModel
+        <h1><a href="/Products">Products</a> | | | | <a href="/Categories">Categories</a></h1>
+        <div class="container">
+            <div class = "formBox">
+                <h1>New Product</h1>
+                <form asp-action="AddProduct" asp-controller="Home" method="post">
+                    <label asp-for="newProduct.Name">Product Name: </label>
+                    <input asp-for="newProduct.Name"><br>
+                    <label asp-for="newProduct.Description">Product Desctription: </label>
+                    <input asp-for="newProduct.Description"><br>
+                    <label asp-for="newProduct.Price">Product Price: </label>
+                    <input asp-for="newProduct.Price"><br>
+                    <input value="Add Product" class = "btn" type="submit">
+                </form>
+            </div>
+            <div class = "formBoxMessage">
+                
+                
+            </div>
+            <div class = "formBox">
+                <h1>Products In Inventory</h1>
+                <div class="listBox">
+                @{
+                    <ul>
+                        @foreach(Product prod in Model.Products){
+                            <li><a href="/product/@prod.ProductId">@prod.Name</a></li>
+                        }
+                    </ul>
+                }
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

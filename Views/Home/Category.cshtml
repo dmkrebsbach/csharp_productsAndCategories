@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en"></html>
+	<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>Individual Category</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="~/css/productStyle.css">
+	</head>
+    <body>
+        @model CategoryViewModel
+        <h1><a href="/Products">Products</a> | | | | <a href="/Categories">Categories</a></h1>
+        <h1>CATEGORY: @Model.thisCategory.Name</h1>
+        <div class="container">
+            <div class="formBox">
+                <h1>Products In This Category:</h1>
+                <div class = "listBox">
+                    
+                    @{
+                        <ul>
+                            @foreach(Association assoc in Model.thisCategory.Associations){
+                                <li>@assoc.Product.Name</li>
+                            }
+                        </ul>
+                    }
+                </div>
+            </div>
+            <div class = "formBoxMessage">
+                
+                
+            </div>
+            <div class = "formBox">
+                <h1>Add Product To Category</h1>
+                    <form class="categoryForm" asp-action="AddIndProduct" asp-controller="Home" method="post">
+                        <label asp-for="Association.ProductId">Add Product: </label>
+                        <select asp-for="Association.ProductId">
+                            @{
+                                @foreach(Product prod in Model.thisProductList){
+                                <option value="@prod.ProductId">
+                                        <li>@prod.Name</li>
+                                </option>
+                                }
+                            }
+                        </select>
+                        <input value="Add Product" class = "btn" type="submit">
+                    </form>
+            </div>
+        </div>
+    </body>
+</html>
